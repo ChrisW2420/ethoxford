@@ -30,24 +30,9 @@
   </nav>
 
   <h1>Connect to Metamask</h1>
-    <button onclick="connectMetamask()">Connect Metamask</button>
-
-    <script>
-        async function connectMetamask() {
-            // Check if Metamask is installed
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    // Request accounts access
-                    await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    console.log('Connected to Metamask!');
-                } catch (error) {
-                    console.error(error);
-                }
-            } else {
-                console.error('Metamask is not installed');
-            }
-        }
-    </script>
+  <script src="./register_wallet.js" type="text/javascript"></script>
+  <button id="Connect MetaMask" onclick="connectMetamask()">Connect Metamask</button>
+  <button id="Execute MetaMask" onclick="executeMetamask()">Execute Metamask</button>
 
 
   <!-- Bootstrap JS (optional, for certain components) -->
