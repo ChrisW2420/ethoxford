@@ -12,6 +12,8 @@ class SubscriptionSerializer(serializers.ModelSerializer):
       'period',
       'date_last_paid',
       'date_pay_next',
+      'date_final',
+      
       'ticker',
       'smart_contract_address',
       'virtual_card_address',

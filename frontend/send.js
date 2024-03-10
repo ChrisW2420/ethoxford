@@ -5,10 +5,35 @@ const sendEther = async (contract_address, amount) => {
   // Initialize a web3 instance using an Infura or Alchemy URL
   const web3 = new Web3("wss://polygon-mumbai-bor-rpc.publicnode.com");
 
+  let account = null;
+
   // The sender's Ethereum address and private key
-  const senderAddress = "0x667396101862871AA0039d856f87c0378a84FE92";
-  const privateKey =
-    "4399b2fb3ffa344351b43bc95da54385692241d8925e779258a942fef01d5039";
+  if (typeof window.ethereum !== "undefined") {
+    // Create a new Web3 instance with MetaMask provider
+    const web3 = new Web3(window.ethereum);
+
+    // Request account access if needed
+    window.ethereum
+      .request({ method: "eth_requestAccounts" })
+      .then(function (accounts) {
+        // Get the first account from the array of accounts
+        account = accounts[0];
+
+        // Display the account address
+        console.log("Wallet Address:", account);
+      })
+      .catch(function (error) {
+        // Handle error if user denies account access
+        console.error(error);
+      });
+  } else {
+    // If MetaMask is not installed, prompt the user to install it
+    console.error("MetaMask is not installed!");
+  }
+
+  const senderAddress = account;
+  let privateKey = prompt("Please provide your private key:");
+  // "4399b2fb3ffa344351b43bc95da54385692241d8925e779258a942fef01d5039";
 
   // The amount of Ether to send
   const amountToSend = web3.utils.toWei(amount, "ether"); // Converts 0.01 Ether to Wei

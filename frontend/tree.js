@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Create and style the root node, place it exactly at the center of the container
   const rootNode = document.createElement("div");
   rootNode.className = "node root";
-  rootNode.innerText = "Root";
+  rootNode.innerText = "";
   rootNode.style.left = `${center.x - nodeRadius}px`; // Centering the node
   rootNode.style.top = `${center.y - nodeRadius}px`; // Centering the node
   treeContainer.appendChild(rootNode);

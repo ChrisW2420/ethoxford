@@ -107,6 +107,14 @@
             />
           </div>
         </div>
+        <div class="input-group mb-2">
+          <label for="date_final" class="col-3 align-self-center"
+            >Final date:</label
+          >
+          <div class="col-8">
+            <input type="date" class="form-control" id="date_final" />
+          </div>
+        </div>
         <button id="submitButton" type="submit" class="btn btn-primary">
           Submit
         </button>
@@ -116,31 +124,30 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@superfluid-finance/js-sdk@1.13.0/dist/umd/superfluid.min.js"></script>
     <script>
-      async function get_fields(){
-
+      async function get_fields() {
         const params = new URLSearchParams(window.location.search);
         // Get the 'name' parameter from the URL
-        const name = params.get('name');
-        const currency = params.get('namcurrencye');
-        const price = params.get('price');
-        const period = params.get('period');
-        
+        const name = params.get("name");
+        const currency = params.get("namcurrencye");
+        const price = params.get("price");
+        const period = params.get("period");
+
         if (name) {
           // Set the value of the input field with id 'nameInput' to the 'name' parameter
-          document.getElementById('name').value = name;
-      }
-      if (currency) {
+          document.getElementById("name").value = name;
+        }
+        if (currency) {
           // Set the value of the input field with id 'nameInput' to the 'name' parameter
-          document.getElementById('currency').value = currency;
-      }
-      if (price) {
+          document.getElementById("currency").value = currency;
+        }
+        if (price) {
           // Set the value of the input field with id 'nameInput' to the 'name' parameter
-          document.getElementById('price').value = price;
-      }
-      if (period) {
+          document.getElementById("price").value = price;
+        }
+        if (period) {
           // Set the value of the input field with id 'nameInput' to the 'name' parameter
-          document.getElementById('period').value = period;
-      }
+          document.getElementById("period").value = period;
+        }
       }
       async function create_database_subscription(sc_address, vc_address) {
         let ticker = document.getElementById("currency").value;
@@ -148,6 +155,7 @@
         let name = document.getElementById("name").value;
         let period = document.getElementById("period").value;
         let currentDate = new Date();
+        let date_final = document.getElementById("date_final").value;
 
         currentDate.setSeconds(currentDate.getSeconds() + parseInt(period));
 
@@ -156,6 +164,7 @@
           virtual_card_address: vc_address,
           name: name,
           date_pay_next: currentDate,
+          date_final: date_final === "" ? null : date_final,
           price: price,
           period: period,
           ticker: ticker,
@@ -164,6 +173,7 @@
         console.log(data);
         result = await create_subscription(data);
         console.log(result);
+        alert("Success!");
       }
 
       document.getElementById("submitButton").addEventListener("click", (e) => {
@@ -176,7 +186,6 @@
               addresses["vc_address"]
             );
           })
-          .then(alert("Success!"))
           .catch((error) => {
             console.error("Error deploying contract:", error);
           });
@@ -186,9 +195,7 @@
         check_logged_in();
       });
 
-      document.addEventListener('DOMContentLoaded', get_fields);
-
-
+      document.addEventListener("DOMContentLoaded", get_fields);
     </script>
   </body>
 </html>

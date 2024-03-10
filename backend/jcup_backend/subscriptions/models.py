@@ -10,6 +10,8 @@ class SubscriptionModel(models.Model):
   period = models.IntegerField()
   date_last_paid = models.DateTimeField(auto_now=True)
   date_pay_next = models.DateTimeField(null=True)
+  date_final = models.DateTimeField(null=True, blank=True)
+  
   ticker = models.CharField(max_length=255)
   
   smart_contract_address = models.TextField()
