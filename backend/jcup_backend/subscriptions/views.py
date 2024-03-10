@@ -33,3 +33,6 @@ class SubscriptionDetail(generics.RetrieveUpdateDestroyAPIView):
   serializer_class = SubscriptionSerializer
   queryset = SubscriptionModel.objects.all()
   permission_classes = (permissions.AllowAny,)
+
+  def put(self, request, *args, **kwargs):
+    return self.partial_update(request, *args, **kwargs)

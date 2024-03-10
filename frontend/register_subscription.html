@@ -74,9 +74,7 @@
           >
           <div class="col-8">
             <select class="form-control" id="currency" name="currency">
-              <option value="USD">BTC</option>
               <option value="EUR">ETH</option>
-              <option value="GBP">XRP</option>
             </select>
           </div>
         </div>
@@ -122,14 +120,21 @@
         let price = document.getElementById("price").value;
         let name = document.getElementById("name").value;
         let period = document.getElementById("period").value;
+        let currentDate = new Date();
+
+        currentDate.setSeconds(currentDate.getSeconds() + parseInt(period));
+
         let data = {
           smart_contract_address: sc_address,
           virtual_card_address: vc_address,
           name: name,
+          date_pay_next: currentDate,
           price: price,
           period: period,
           ticker: ticker,
         };
+
+        console.log(data);
         result = await create_subscription(data);
         console.log(result);
       }
@@ -144,6 +149,7 @@
               addresses["vc_address"]
             );
           })
+          .then(alert("Success!"))
           .catch((error) => {
             console.error("Error deploying contract:", error);
           });

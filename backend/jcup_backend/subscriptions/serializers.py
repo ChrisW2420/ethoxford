@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import SubscriptionModel
+from datetime import datetime, timedelta
 
 class SubscriptionSerializer(serializers.ModelSerializer):
   class Meta:
@@ -9,7 +10,8 @@ class SubscriptionSerializer(serializers.ModelSerializer):
       'name',
       'price',
       'period',
-      'date',
+      'date_last_paid',
+      'date_pay_next',
       'ticker',
       'smart_contract_address',
       'virtual_card_address',
