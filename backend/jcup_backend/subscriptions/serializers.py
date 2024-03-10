@@ -8,7 +8,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
       'id',
       'name',
       'price',
-      'frequency',
+      'period',
       'date',
       'ticker',
       'smart_contract_address',

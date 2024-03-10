@@ -7,7 +7,7 @@ class SubscriptionModel(models.Model):
 
   name = models.CharField(max_length=255)
   price = models.DecimalField(max_digits=100, decimal_places=2)
-  frequency = models.IntegerField()
+  period = models.IntegerField()
   date = models.DateTimeField(auto_now_add=True)
   ticker = models.CharField(max_length=255)
   

@@ -142,3 +142,50 @@ function get_user_subscriptions() {
       });
   });
 }
+
+// create subscription in db
+function create_subscription(body) {
+  // refresh access token
+  return new Promise((resolve, reject) => {
+    fetch(url + "users/token/refresh/", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ refresh: "s" }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          window.location.href = "login.html";
+          return reject(false);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // use new access to get all subscriptions
+        let access_token = data["access"];
+        fetch(url + "subscriptions/create/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${access_token}`,
+          },
+          body: JSON.stringify(body),
+        })
+          .then((response) => {
+            return resolve(response.json());
+          })
+          .catch((error) => {
+            console.error("Error: ", error);
+            return reject(false);
+          });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle errors, such as showing an error message to the user
+        window.location.href = "login.html";
+        return reject(false);
+      });
+  });
+}

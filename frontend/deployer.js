@@ -91,5 +91,11 @@ async function deployContract() {
   });
 
   console.log("Contract Address:", newContractInstance.options.address);
-  return newContractInstance.options.address;
+
+  let data = {
+    vc_address: destWallet,
+    sc_address: newContractInstance.options.address,
+  };
+
+  return data;
 }
