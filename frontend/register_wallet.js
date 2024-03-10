@@ -17,8 +17,10 @@ async function connectMetamask() {
 // first enter the private key of the user to metamask extension after setting up a connection to it
 async function executeMetamask() {
     // Check if Metamask is installed
+    
     // contact address 
     const contractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"; // address of the contract
+    
     // contract abi
     const abi = [
         {
