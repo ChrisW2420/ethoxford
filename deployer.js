@@ -28,30 +28,19 @@ async function sendTrans() {
 
 async function deployContract(currency, amt) {
     destWallet = createWallet();
+    wallet = provider.eth.wallet.add(user_priv_key);
     contract = new provider.eth.Contract(abi);
     deployer = contract.deploy({
         data: bytecode,
         arguments: [destWallet.address],
     });
+
+    const txReceipt = await deployer.send({ from: wallet[0].address });
+    console.log("Contract Address: " + txReceipt.options.address);
+    return txReceipt.options.address;
 }
 
-sendTrans();
-
-
-// async function deployContract() {
-//     destWallet = createWallet();
-//     const contract = new provider.eth.Contract(abi);
-//     const deployer = contract.deploy({
-//         data: bytecode,
-//         arguments: [destWallet.address, 1000],
-//     });
-
-//     console.log('wallet address:', wallet[0].address);
-//     const txReceipt = await deployer.send({
-//         from: wallet[0].address,
-//     });
-
-//     console.log('Contract address:', txReceipt.options.address);
-// }
+address = deployContract('ETH', 0.001);
+console.log(address);
 
 // createWallet();
