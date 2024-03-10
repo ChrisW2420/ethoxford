@@ -1,0 +1,27 @@
+{
+  "name": "ethoxford",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChrisW2420/ethoxford.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChrisW2420/ethoxford/issues"
+  },
+  "homepage": "https://github.com/ChrisW2420/ethoxford#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethereumjs-tx": "^2.1.2",
+    "ethers": "^6.11.1",
+    "web3": "^4.6.0"
+  }
+}
