@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
     const treeContainer = document.getElementById('tree');
     const center = { x: treeContainer.offsetWidth / 2, y: treeContainer.offsetHeight / 2 };
-    const radius = 300; // Distance from center to the nodes
+    const radius = 200; // Distance from center to the nodes
     const nodeSize = 50; // Size of the nodes, assuming square nodes
     const nodeRadius = nodeSize / 2; // Radius of the node circles
+
 
     // Function to draw a line between two points with adjustments
     function drawLine(container, x1, y1, x2, y2) {
@@ -17,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const line = document.createElement('div');
         line.style.position = 'absolute';
-        line.style.height = '2px'; // Make line thicker
+        line.style.height = '4px'; // Make line thicker
         line.style.backgroundColor = 'gray'; // Change line color to gray
         const length = Math.sqrt((adjustedX2 - x1) ** 2 + (adjustedY2 - y1) ** 2);
         const angle = Math.atan2(adjustedY2 - y1, adjustedX2 - x1);
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
     rootNode.style.top = `${center.y - nodeRadius}px`; // Centering the node
     treeContainer.appendChild(rootNode);
 
-    const numberOfNodes = 10;
+    const numberOfNodes = 5;
 
     // Create child nodes and connect them to the root
     for (let i = 0; i < numberOfNodes; i++) {
