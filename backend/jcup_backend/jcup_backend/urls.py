@@ -17,9 +17,13 @@ Including another URLconf
 # from django.contrib import admin
 from django.urls import path, include
 from users import urls as users_urls
+from smart_contracts import urls as smart_contracts_urls
+from virtual_cards import urls as virtual_cards_urls
 
 urlpatterns = [
     # path("admin/", admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('users/', include(users_urls)),
+    path('smart_contracts/', include(smart_contracts_urls)),
+    path('virtual_cards/', include(virtual_cards_urls))
 ]
