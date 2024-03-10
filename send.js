@@ -9,7 +9,7 @@ const senderAddress = '0x667396101862871AA0039d856f87c0378a84FE92';
 const privateKey = '4399b2fb3ffa344351b43bc95da54385692241d8925e779258a942fef01d5039';
 
 // The recipient's Ethereum address
-const recipientAddress = '0x7d17699101E2aab30089b62537DBE9140Ddad645S';
+const recipientAddress = "0x07d17699101E2aab30089b62537DBE9140Ddad64";
 
 // The amount of Ether to send
 const amountToSend = web3.utils.toWei('0.01', 'ether'); // Converts 0.01 Ether to Wei
