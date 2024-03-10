@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Node Tree</title>
+    <style>
+        #tree {
+            position: relative;
+            width: 800px;
+            height: 800px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .node {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer; /* Make it obvious it's clickable */
+        }
+        .node.root {
+            background-color: #ffcc00; /*Differentiate the root node */
+        }
+        #descriptionBox {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .node:hover {
+        background-color: #e9e9e9;
+}
+    </style>
+</head>
+<body>
+
+<div id="tree"></div>
+<div id="descriptionBox">Click a node to see its description.</div>
+<script src="api.js"></script>
+
+<script src="tree.js"></script>
+</body>
+</html>
