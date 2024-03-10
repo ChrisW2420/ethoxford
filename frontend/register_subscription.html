@@ -15,6 +15,7 @@
     ></script>
     <script src="deployer.js"></script>
     <script src="api.js"></script>
+    <script src="url_parser.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -117,6 +118,32 @@
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@superfluid-finance/js-sdk@1.13.0/dist/umd/superfluid.min.js"></script>
     <script>
+      async function get_fields(){
+
+        const params = new URLSearchParams(window.location.search);
+        // Get the 'name' parameter from the URL
+        const name = params.get('name');
+        const currency = params.get('namcurrencye');
+        const price = params.get('price');
+        const period = params.get('period');
+        
+        if (name) {
+          // Set the value of the input field with id 'nameInput' to the 'name' parameter
+          document.getElementById('name').value = name;
+      }
+      if (currency) {
+          // Set the value of the input field with id 'nameInput' to the 'name' parameter
+          document.getElementById('currency').value = currency;
+      }
+      if (price) {
+          // Set the value of the input field with id 'nameInput' to the 'name' parameter
+          document.getElementById('price').value = price;
+      }
+      if (period) {
+          // Set the value of the input field with id 'nameInput' to the 'name' parameter
+          document.getElementById('period').value = period;
+      }
+      }
       async function create_database_subscription(sc_address, vc_address) {
         let ticker = document.getElementById("currency").value;
         let price = document.getElementById("price").value;
@@ -152,6 +179,10 @@
       document.addEventListener("DOMContentLoaded", async function () {
         check_logged_in();
       });
+
+      document.addEventListener('DOMContentLoaded', get_fields);
+
+
     </script>
   </body>
 </html>
