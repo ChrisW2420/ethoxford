@@ -49,8 +49,11 @@
 
     <!-- Check if logged in. -->
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", async function () {
         check_logged_in();
+
+        user_subscriptions = await get_user_subscriptions();
+        console.log(user_subscriptions);
       });
     </script>
   </body>
