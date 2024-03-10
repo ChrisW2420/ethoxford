@@ -5,7 +5,7 @@ const abi = require('./abi.json'); // Assuming ABI is the contract's ABI
 const accounts = require('web3-eth-accounts')
 
 // You should replace this URL with the WebSocket provider URL you intend to use, for example, Infura or Alchemy
-const provider = new Web3('wss://base-sepolia-rpc.publicnode.com');
+const provider = new Web3('wss://polygon-mumbai-bor-rpc.publicnode.com');
 
 const userPrivKey = '0x4399b2fb3ffa344351b43bc95da54385692241d8925e779258a942fef01d5039';
 
